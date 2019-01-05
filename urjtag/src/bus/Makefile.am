@@ -170,6 +170,10 @@ if ENABLE_BUS_SLSUP3
 libbus_la_SOURCES += slsup3.c
 endif
 
+if ENABLE_BUS_SPI
+libbus_la_SOURCES += spi.c
+endif
+
 if ENABLE_BUS_TX4925
 libbus_la_SOURCES += tx4925.c
 endif
