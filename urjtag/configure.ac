@@ -647,6 +647,7 @@ URJ_DRIVER_SET([bus], [
 	sharc_21065L
 	sharc_21369_ezkit
 	slsup3
+	spi
 	tx4925
 	zefant_xs3
 ])
