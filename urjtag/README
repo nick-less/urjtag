@@ -14,3 +14,12 @@ the project homepage
                          << http://www.urjtag.org >>
 
 
+Notes:
+
+This has the spi patch from https://sourceforge.net/p/urjtag/mailman/message/26576678/ applied
+
+Also some MacOS build issues were corrected.
+
+You may need a newer bison, but not to new (2.3 & 2.4 do not work, 3.0.4 and 3.0.5 do, 3.2.4 doesn't)
+
+

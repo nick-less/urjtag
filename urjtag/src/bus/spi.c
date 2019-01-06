@@ -74,6 +74,7 @@ spi_bus_new (urj_chain_t *chain, const urj_bus_driver_t *driver,
     DSHIFT = 0;
     for (i = 0; cmd_params[i] != NULL; i++)
     {
+
         if (cmd_params[i]->key == URJ_BUS_PARAM_KEY_AMODE)
         {
             switch (cmd_params[i]->value.lu)
@@ -248,7 +249,7 @@ spi_bus_area (urj_bus_t *bus, uint32_t adr, urj_bus_area_t *area)
     asize = (uint64_t)1 << asize;
     if (adr < asize) 
     {
-        area->description = "SPI_FLASH";
+        area->description = "SPI";
         area->start = UINT32_C (0x00000000);
         area->length = (uint64_t)asize;
         area->width = (DSHIFT + 1) * 8;
