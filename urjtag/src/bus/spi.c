@@ -19,6 +19,12 @@
  * 02111-1307, USA.
  *
  * Written by Jon Stroud <jstroud@breakingpoint.com>, 2010.
+ *
+ * Patch Note: 
+ * it seems the SPI driver was originally written for a SPI RAM
+ * the SPI bus assumes memory read/write via cmd 0x03 and 0x02, so the readem command works, but 
+ * writemem will not correctly program SPI flash devices, you should use flashmem instead
+ *
  */
 
 #include "sysdep.h"
@@ -70,7 +76,7 @@ spi_bus_new (urj_chain_t *chain, const urj_bus_driver_t *driver,
         return NULL;
 
     CS = SCK = MOSI = MISO = NULL;
-    ASHIFT = 1;
+    ASHIFT = 2;
     DSHIFT = 0;
     for (i = 0; cmd_params[i] != NULL; i++)
     {
@@ -449,7 +455,7 @@ spi_bus_free (urj_bus_t *bus)
 
 const urj_bus_driver_t urj_bus_spi_bus = {
     "spi",
-    N_("SPI FLASH driver via BSR, requires parameters:\n"
+    N_("SPI driver via BSR, requires parameters:\n"
        "           NCS=<CS#>|CS=<CS> SCK=<SCK> MISO=<MISO> MOSI=<MOSI> [AMODE=8|16|32] [WIDTH=8|16|32]"),
     spi_bus_new,
     spi_bus_free,
