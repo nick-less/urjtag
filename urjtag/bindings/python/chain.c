@@ -34,8 +34,6 @@
 
 #include "py_urjtag.h"
 
-PyObject *UrjtagError;
-
 typedef struct
 {
     PyObject_HEAD urj_chain_t *urchain;

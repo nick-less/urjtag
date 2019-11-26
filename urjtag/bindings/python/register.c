@@ -34,8 +34,6 @@
 
 #include "py_urjtag.h"
 
-extern PyObject *UrjtagError;
-
 static void
 urj_pyr_dealloc (urj_pyregister_t *self)
 {

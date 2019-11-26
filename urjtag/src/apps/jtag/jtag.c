@@ -560,7 +560,7 @@ main (int argc, char *const argv[])
     rl_readline_name = "urjtag";
     rl_completer_quote_characters = "\"";
     rl_filename_completion_desired = 1;
-    rl_filename_quote_characters = " ";
+//    rl_filename_quote_characters = " ";
     rl_completion_entry_function = urj_cmd_completion;
 #endif
 

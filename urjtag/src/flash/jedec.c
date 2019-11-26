@@ -39,73 +39,8 @@
 #include "intel.h"
 #include "jedec.h"
 
-/* Manufacturers */
-#define MANUFACTURER_AMD        0x0001
-#define MANUFACTURER_ATMEL      0x001F
-#define MANUFACTURER_FUJITSU    0x0004
-#define MANUFACTURER_ST         0x0020
-#define MANUFACTURER_SST        0x00BF
-#define MANUFACTURER_TOSHIBA    0x0098
-#define MANUFACTURER_MX         0x00C2
 
-/* AMD */
-#define AM29F800BB      0x2258
-#define AM29F800BT      0x22D6
-#define AM29LV800BB     0x225B
-#define AM29LV800BT     0x22DA
-#define AM29LV400BT     0x22B9
-#define AM29LV400BB     0x22BA
-#define AM29LV160DT     0x22C4
-#define AM29LV160DB     0x2249
-#define AM29BDS323D     0x22D1
-#define AM29BDS643D     0x227E
-#define AM29LV081B      0x0038
-#define AM29LV040B      0x004F
 
-/* Atmel */
-#define AT49xV16x       0x00C0
-#define AT49xV16xT      0x00C2
-
-/* Fujitsu */
-#define MBM29LV160TE    0x22C4
-#define MBM29LV160BE    0x2249
-#define MBM29LV800BB    0x225B
-
-/* ST - www.st.com */
-#define M29W800T        0x00D7
-#define M29W800B        0x005B
-#define M29W160DT       0x22C4
-#define M29W160DB       0x2249
-
-/* SST */
-#define SST39LF800      0x2781
-#define SST39LF160      0x2782
-
-/* Toshiba */
-#define TC58FVT160      0x00C2
-#define TC58FVB160      0x0043
-
-/* MX */
-#define MX29LV400T      0x22B9
-#define MX29LV400B      0x22BA
-
-struct mtd_erase_region_info
-{
-    uint32_t offset;            /* At which this region starts, from the beginning of the MTD */
-    uint32_t erasesize;         /* For this region */
-    uint32_t numblocks;         /* Number of blocks of erasesize in this region */
-};
-
-struct amd_flash_info
-{
-    const int mfr_id;
-    const int dev_id;
-    const char *name;
-    const long size;
-    const uint8_t interface_width;
-    const int numeraseregions;
-    const struct mtd_erase_region_info regions[4];
-};
 
 static const struct amd_flash_info table[] = {
     {

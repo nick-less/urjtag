@@ -134,6 +134,9 @@ _URJ_BUS(sharc_21369_ezkit)
 #ifdef ENABLE_BUS_SLSUP3
 _URJ_BUS(slsup3)
 #endif
+#ifdef ENABLE_BUS_SPI
+_URJ_BUS(spi)
+#endif
 #ifdef ENABLE_BUS_TX4925
 _URJ_BUS(tx4925)
 #endif

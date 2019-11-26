@@ -44,12 +44,14 @@
 #include "amd.h"
 #include "cfi.h"
 #include "intel.h"
+#include "spi_flash.h"
 
 urj_flash_cfi_array_t *urj_flash_cfi_array = NULL;
 
 static const urj_flash_detect_func_t urj_flash_detect_funcs[] = {
     &urj_flash_cfi_detect,
     &urj_flash_jedec_detect,
+    &urj_flash_spi_detect,
     &urj_flash_amd_detect,
 #ifdef JEDEC_EXP
     &urj_flash_jedec_exp_detect,

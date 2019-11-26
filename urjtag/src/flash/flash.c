@@ -50,6 +50,7 @@
 #include "cfi.h"
 #include "intel.h"
 #include "amd.h"
+#include "spi_flash.h"
 
 const urj_flash_driver_t * const urj_flash_flash_drivers[] = {
     &urj_flash_amd_32_flash_driver,
@@ -59,6 +60,7 @@ const urj_flash_driver_t * const urj_flash_flash_drivers[] = {
     &urj_flash_intel_16_flash_driver,
     &urj_flash_intel_8_flash_driver,
     &urj_flash_amd_29xx040_flash_driver,        //20/09/2006
+    &urj_spi_flash_driver,
     NULL
 };
 
