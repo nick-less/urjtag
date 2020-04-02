@@ -1,7 +1,5 @@
 #
-# $Id$
-#
-# Copyright (C) 2007, 2018 Kolja Waschk and other
+# Copyright (C) 2007, 2019 Kolja Waschk and other
 #    UrJTAG.org developers, (C) 2002, 2003 ETC s.r.o.
 #
 # This program is free software; you can redistribute it and/or
@@ -23,7 +21,7 @@
 #  and other UrJTAG authors, 2007, 2008, ...
 #
 
-AC_INIT([UrJTAG], [2018.09], [http://urjtag.org], [urjtag])
+AC_INIT([UrJTAG], [2019.12], [http://urjtag.org], [urjtag])
 
 dnl autoconf-2.64 was released in 2008
 AC_PREREQ(2.64)
@@ -47,7 +45,11 @@ if test "$SVN_REVISION" -eq 0; then
     SVN_REVISION=`git log -n1 --pretty=format:%b 2>/dev/null | sed -n '/^git-svn-id:/{s:.*@::;s: .*::;p}'`
     SVN_FROM="git-svn log"
 fi
-if test "$SVN_REVISION" -eq "0" ; then
+if test "$SVN_REVISION" = "0" -o -z "$SVN_REVISION"; then
+    SVN_REVISION=`git log -n1 --pretty=format:%h 2>/dev/null`
+    SVN_FROM="git log hash"
+fi
+if test "$SVN_REVISION" = "0" -o -z "$SVN_REVISION" ; then
     AC_MSG_RESULT([unknown, using 0])
 else
     AC_MSG_RESULT([from $SVN_FROM: $SVN_REVISION])
@@ -615,6 +617,7 @@ m4_ifnblank([$3], [
 
 # Enable bus drivers
 URJ_DRIVER_SET([bus], [
+	ahbjtag
 	arm9tdmi
 	au1500
 	avr32

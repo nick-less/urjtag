@@ -1,5 +1,4 @@
 #
-# $Id$
 #
 # Manufacturer ID database
 # Copyright (C) 2002 ETC s.r.o.
@@ -19,17 +18,37 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 # 02111-1307, USA.
 #
+# Originaly
 # Written by Marcel Telka <marcel@telka.sk>, 2002.
+#
+# Updates go through the project mailinglist.
+# Report there what you think should be changed.
+# Karma bonus points for a signed-off patch.
 #
 # Documentation:
 # [1] JEDEC Solid State Technology Association, "Standard Manufacturer's
-#     Identification Code", September 2001, Order Number: JEP106-K
+#     Identification Code", Order Number: JEP106
+#
+# You can download the list from:
+#  http://www.jedec.org/standards-documents/results/jep106
+# in pdf format. Openocd uses
+#  https://sourceforge.net/p/openocd/code/ci/master/tree/src/helper/update_jep106.pl
+# to extract the ids
 #
 
 # bits 11-1 of the Device Identification Register
+## column 2 is a directory name in the data directory where this file resides
+### column 3 is multi word and is a descriptive text of a manufacturer
+00000000001	amd		AMD
+00000000010	0 		AMI
+00000000011	0		Fairchild
+00000000100	0		Fujitsu
+00000000101	0		GTE
 00000000110	lexra		Lexr
 00000000111	hitachi		Hitachi
+00000001000	0		Inmos
 00000001001	intel		Intel
+00000001010	0		I.T.T.
 00000001110	freescale	Freescale (Motorola)
 00000010101	philips		Philips Semi. (Signetics)
 00000010111	ti		Texas Instruments
@@ -49,5 +68,14 @@
 00101110000	brecis		Brecis (PMC-Sierra)
 00111101001	marvell		Marvell
 00110101011	marvell		Marvell
-# collides with other ARM-based chips
-#11110000111	arm  		ARM
+10000000111	0		Shenzhen Jinge Information Co. Ltd.
+10000011111	0		Shenzhen City Gcai Electronics
+10000100100	0		Shenzhen Elicks Technology
+10001001001	0		Shenzhen Zhongteng Electronic Corp. Ltd.
+10001001100	0		Shenzhen Pango Microsystems Co. Ltd
+10001100111	0		Shenzhen Mic Electronics Technology
+10010001011	0		Paragon Technology (Shenzhen) Ltd.
+10010001101	0		Shenzhen Yong Sheng Technology
+10010001110	0		SNOAMOO (Shenzhen Kai Zhuo Yue)
+10010010000	0		Shenzhen XinRuiYan Electronics
+10010010100	0		Shenzhen Chixingzhe Tech Co. Ltd.
