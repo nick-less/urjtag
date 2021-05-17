@@ -109,11 +109,19 @@ jtag_get_jtagdir (const char *subpath)
     }
 
     strcpy (ret, home);
+#ifdef __MINGW32__
+    strcat (ret, "\\");
+#else
     strcat (ret, "/");
+#endif
     strcat (ret, JTAGDIR);
     if (subpath)
     {
+#ifdef __MINGW32__
+        strcat (ret, "\\");
+#else
         strcat (ret, "/");
+#endif
         strcat (ret, subpath);
     }
 
@@ -441,7 +449,9 @@ main (int argc, char *const argv[])
         printf (_("  [FILE]              file containing commands to execute\n"));
         printf ("\n");
 
-        printf (_("  Please report bugs at http://www.urjtag.org\n"));
+        printf (_("  Please report bugs at http://www.urjtag.org\n\n"));
+        printf (_("Home directory: %s\n"),jtag_get_jtagdir(NULL));
+        printf (_("Data directory: %s\n"),urj_get_data_dir());
 
         exit (0);
     }
